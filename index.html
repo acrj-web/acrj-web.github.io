@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACRJ - Associação Cultural e Recreativa Juncalense</title>
+
+    <!-- Ícone do Separador (Favicon) -->
+    <link rel="icon" type="image/png" href="img/logo.png">
+    
+    <!-- Fonte Ultra-Moderna do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-principal: #0b0f19;
+            --bg-card: #161f30;
+            --texto-claro: #f1f5f9;
+            --texto-mutado: #94a3b8;
+            --subtil-border: rgba(255, 255, 255, 0.08);
+            --accent: #6366f1;
+            --accent-hover: #4f46e5;
+            --facebook-color: #1877f2;
+            --facebook-hover: #0d65d9;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-principal);
+            color: var(--texto-claro);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 20px;
+        }
+
+        .wrapper {
+            max-width: 1100px;
+            margin: 40px auto 0 auto;
+            width: 100%;
+        }
+
+        /* --- Cabeçalho Institucional --- */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .logo {
+            max-width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 16px;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+        }
+
+        .badge {
+            background: rgba(99, 102, 241, 0.15);
+            color: #a5b4fc;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .header h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 15px;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: var(--texto-mutado);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Secção de Projetos e Atividades --- */
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--texto-claro);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::after {
+            content: '';
+            height: 1px;
+            background: var(--subtil-border);
+            flex-grow: 1;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--subtil-border);
+            border-radius: 20px;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #a5b4fc);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card.facebook-card::before {
+            background: linear-gradient(90deg, var(--facebook-color), #60a5fa);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .project-tag.facebook-tag {
+            color: #60a5fa;
+        }
+
+        .project-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .project-card p {
+            color: var(--texto-mutado);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-link:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .btn-link.facebook-btn {
+            background-color: var(--facebook-color);
+        }
+
+        .btn-link.facebook-btn:hover {
+            background-color: var(--facebook-hover);
+        }
+
+        .btn-link svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+        }
+
+        /* Cartão "Em Breve" */
+        .card-disabled {
+            opacity: 0.65;
+            border-style: dashed;
+        }
+
+        .card-disabled:hover {
+            transform: none;
+            border-color: var(--subtil-border);
+            box-shadow: none;
+        }
+
+        .card-disabled:hover::before {
+            opacity: 0;
+        }
+
+        /* --- Rodapé --- */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid var(--subtil-border);
+            color: var(--texto-mutado);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2.1rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+            .project-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    
+    <!-- Cabeçalho Institucional -->
+    <header class="header">
+        <!-- Logótipo da Associação -->
+        <img src="img/logo.png" alt="Logótipo ACRJ" class="logo">
+        <br>
+        <span class="badge">Fundada a 1 de Maio de 1975</span>
+        <h1>Associação Cultural e Recreativa Juncalense</h1>
+        <p>O coração da aldeia. </br> Unidos na dinamização comunitária, no recreio e na salvaguarda da história do Juncal do Campo e das nossas gentes.</p>
+    </header>
+
+    <!-- Secção de Projetos e Atividades -->
+    <main>
+        <div class="section-title">Destaques e Comunidade</div>
+
+        <div class="projects-grid">
+            
+            <!-- 1. Cartão das Atividades (Facebook) -->
+            <div class="project-card facebook-card">
+                <div>
+                    <span class="project-tag facebook-tag">Redes Sociais & Notícias</span>
+                    <h3>Atividades & Eventos</h3>
+                    <p>Acompanhe o feed de notícias, eventos comunitários e o dia a dia da ACRJ na nossa página oficial de Facebook.</p>
+                </div>
+                <a href="https://www.facebook.com/acrjuncalense" target="_blank" class="btn-link facebook-btn">
+                    Visitar Facebook
+                    <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                </a>
+            </div>
+
+            <!-- 2. Cartão do Rancho -->
+            <div class="project-card">
+                <div>
+                    <span class="project-tag">Património Musical</span>
+                    <h3>Rancho Folclórico (1994)</h3>
+                    <p>Acervo digital e remasterização sonora do álbum original de 1994 do Rancho Folclórico de Juncal do Campo.</p>
+                </div>
+                <a href="https://acrj-web.github.io/rancho/" target="_blank" class="btn-link">
+                    Explorar Acervo
+                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+            </div>
+
+            <!-- 3. Cartão das Fotos Históricas (Em Breve) -->
+            <div class="project-card card-disabled">
+                <div>
+                    <span class="project-tag" style="color: var(--texto-mutado);">Memória Visual · Em Breve</span>
+                    <h3>Imagens Históricas</h3>
+                    <p>Projeto de recolha, digitalização e salvaguarda do arquivo fotográfico histórico de Juncal do Campo.</p>
+                </div>
+                <span style="font-size: 0.85rem; color: var(--texto-mutado); font-style: italic;">Brevemente disponível</span>
+            </div>
+
+        </div>
+    </main>
+
+</div>
+
+<footer class="footer">
+    © 1975 - 2026 </br>
+   Associação Cultural e Recreativa Juncalense </br>
+   · Todos os direitos reservados ·
+</footer>
+
+</body>
+</html>
